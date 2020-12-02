@@ -29,7 +29,7 @@ bot.on('message', message=>{
                         const member=message.guild.members.resolve(user)
                         member.kick("Warned 5 times")
                         allowPing[message.mentions.users.first().tag]=null
-                        message.channel.send("Got kicked")
+                        message.channel.send(`<@${member.id}> got kicked`)
                     }
                 }
                 else {
@@ -91,7 +91,7 @@ bot.on('message', message=>{
     }
     if(prefix=="." && !message.author.bot){
         if(args[0]=="nickname"){
-            if(message.member.hasPermission("ADMINISTRATOR")){
+            if(message.member.hasPermission("CHANGE_NICKNAME")){
                 if(args[2]==null)args[2]=""
                 if(message.mentions.users.first()){
                     try {
