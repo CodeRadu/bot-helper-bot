@@ -1,0 +1,18 @@
+{
+  "name": "bot-helper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bots.js",
+  "scripts": {
+    "devStart": "nodemon bot.js"
+  },
+  "author": "Radu",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.4.1",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

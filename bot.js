@@ -1,0 +1,118 @@
+const Discord=require('discord.js')
+const bot=new Discord.Client()
+require('dotenv').config()
+const token=process.env.BOT_ID
+
+allowPing={}
+
+bot.on('ready', ()=>{
+    console.log('ready')
+    bot.user.setStatus("online")
+})
+
+bot.on('message', message=>{
+    const prefix=message.content[0]
+    const args=message.content.slice(1).split(' ')
+    if(prefix=="." && !message.author.bot){
+        if(args[0]=="warn"){
+            if(message.member.hasPermission("KICK_MEMBERS")){
+                if(message.mentions.users.first()){
+                    if(!allowPing[message.mentions.users.first().tag]){
+                        allowPing[message.mentions.users.first().tag]={
+                            warns:0
+                        }
+                    }
+                    allowPing[message.mentions.users.first().tag]["warns"]++
+                    message.channel.send(":ballot_box_with_check:")
+                    if(allowPing[message.mentions.users.first().tag]["warns"]>=5){
+                        const user=message.mentions.users.first()
+                        const member=message.guild.members.resolve(user)
+                        member.kick("Warned 5 times")
+                        allowPing[message.mentions.users.first().tag]=null
+                        message.channel.send("Got kicked")
+                    }
+                }
+                else {
+                    message.reply("no one mentioned")
+                }
+            }
+            else {
+                message.reply("to warn a member you need permission to kick")
+            }
+        }
+    }
+    if(prefix=="." && !message.author.bot){
+        if(args[0]=="kick"){
+            if(message.member.hasPermission("KICK_MEMBERS")){
+                if(message.mentions.users.first()){
+                    try {
+                        const user=message.mentions.users.first()
+                        const member=message.guild.members.resolve(user)
+                        member.kick("Kick command was ran")
+                        message.channel.send(":ballot_box_with_check:")
+                        allowPing[message.mentions.users.first().tag]=null
+                    }
+                    catch {
+                        message.reply(":regional_indicator_x: Could not kick")
+                    }
+                }
+                else {
+                    message.reply("no one mentioned")
+                }
+            }
+            else {
+                message.reply("you don\'t have permission to kick")
+            }
+        }
+    }
+    if(prefix=="." && !message.author.bot){
+        if(args[0]=="ban"){
+            if(message.member.hasPermission("BAN_MEMBERS")){
+                if(message.mentions.users.first()){
+                    try {
+                        const user=message.mentions.users.first()
+                        const member=message.guild.members.resolve(user)
+                        member.ban({message: "Ban command was ran"})
+                        message.channel.send(":ballot_box_with_check:")
+                        allowPing[message.mentions.users.first().tag]=null
+                    }
+                    catch {
+                        message.reply(":regional_indicator_x: Could not kick")
+                    }
+                }
+                else {
+                    message.reply("no one mentioned")
+                }
+            }
+            else {
+                message.reply("you don\'t have permission to ban")
+            }
+        }
+    }
+    if(prefix=="." && !message.author.bot){
+        if(args[0]=="nickname"){
+            if(message.member.hasPermission("ADMINISTRATOR")){
+                if(args[2]==null)args[2]=""
+                if(message.mentions.users.first()){
+                    try {
+                        const user=message.mentions.users.first()
+                        const member=message.guild.members.resolve(user)
+                        member.setNickname(args[2])
+                        message.channel.send(":ballot_box_with_check:")
+                    }
+                    catch {
+                        message.reply(":regional_indicator_x: Could not set nickname")
+                    }
+                }
+                else {
+                    message.reply("too few arguments")
+                }
+            }
+            else {
+                message.reply("you don\'t have permission")
+            }
+        }
+    }
+})
+
+bot.login(token)
