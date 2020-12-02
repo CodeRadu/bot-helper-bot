@@ -31,6 +31,9 @@ bot.on('message', message=>{
                         allowPing[message.mentions.users.first().tag]=null
                         message.channel.send(`<@${member.id}> got kicked`)
                     }
+                    if(message.guild.me.hasPermission("KICK_MEMBERS")){
+                        message.reply("I don\'t have permisions to do that")
+                    }
                 }
                 else {
                     message.reply("no one mentioned")
@@ -54,6 +57,9 @@ bot.on('message', message=>{
                     }
                     catch {
                         message.reply(":regional_indicator_x: Could not kick")
+                    }
+                    if(message.guild.me.hasPermission("KICK_MEMBERS")){
+                        message.reply("I don\'t have permisions to do that")
                     }
                 }
                 else {
@@ -79,6 +85,9 @@ bot.on('message', message=>{
                     catch {
                         message.reply(":regional_indicator_x: Could not kick")
                     }
+                    if(message.guild.me.hasPermission("BAN_MEMBERS")){
+                        message.reply("I don\'t have permisions to do that")
+                    }
                 }
                 else {
                     message.reply("no one mentioned")
@@ -103,6 +112,9 @@ bot.on('message', message=>{
                     catch {
                         message.reply(":regional_indicator_x: Could not set nickname")
                     }
+                    /*if(message.guild.me.hasPermission("MANAGE_NICKNAMES")){
+                        message.reply("I don\'t have permisions to do that")
+                    }*/
                 }
                 else {
                     message.reply("too few arguments")
@@ -110,6 +122,32 @@ bot.on('message', message=>{
             }
             else {
                 message.reply("you don\'t have permission")
+            }
+        }
+    }
+    if(prefix=='.'&&!message.author.bot){
+        if(args[0]=="add-tester"){
+            if(message.member.hasPermission("MANAGE_ROLES")){
+                if(message.mentions.users.first()){
+                    try{
+                        const user=message.mentions.users.first()
+                        const member=message.guild.members.resolve(user)
+                        member.roles.add("780726498750890026")
+                        message.channel.send(":ballot_box_with_check:")
+                    }
+                    catch{
+                        message.reply(":regional_indicator_x: Error")
+                    }
+                    if(message.guild.me.hasPermission("MANAGE_ROLES")){
+                        message.reply("I don\'t have permisions to do that")
+                    }
+                }
+                else {
+                    message.reply("too few arguments")
+                }
+            }
+            else{
+                message.reply("you don\'t have perms to manage roles")
             }
         }
     }
