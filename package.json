@@ -4,7 +4,8 @@
   "description": "",
   "main": "bots.js",
   "scripts": {
-    "devStart": "nodemon bot.js"
+    "devStart": "nodemon bot.js",
+    "start": "node bot.js"
   },
   "author": "Radu",
   "license": "ISC",
