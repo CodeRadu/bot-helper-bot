@@ -5,7 +5,7 @@ const exec=require('child_process').exec
 app.get('/update', (req, res)=>{
     res.send("Updated")
     setTimeout(()=>{
-        exec('sh ./download.sh')
+        //exec('sh ./download.sh')
     }, 1000)
 })
 app.get('/start', (req, res)=>{
