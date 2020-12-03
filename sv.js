@@ -9,13 +9,13 @@ app.get('/update', (req, res)=>{
     }, 1000)
 })
 app.get('/start', (req, res)=>{
-    res.send("Started")
+    res.send("Starting")
     setTimeout(()=>{
         exec('sh ./start.sh')
     }, 1000)
 })
 app.get('/stop', (req, res)=>{
-    res.send("Stopped")
+    res.send("Stopping")
     setTimeout(()=>{
         exec('sh ./stop.sh')
     }, 1000)
