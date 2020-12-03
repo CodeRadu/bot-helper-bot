@@ -7,10 +7,7 @@ const io=require('socket.io')(server)
 app.use(express.static('public'))
 
 app.get('/update', (req, res)=>{
-    res.send("Updating")
-    setTimeout(()=>{
-        exec('sh ./download.sh')
-    }, 1000)
+    res.render('update.ejs')
 })
 app.get('/start', (req, res)=>{
     res.send("Starting")
