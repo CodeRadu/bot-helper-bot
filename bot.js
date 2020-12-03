@@ -180,7 +180,7 @@ bot.on('message', message=>{
     }
     if(prefix=='.'&&!message.author.bot){
         if(args[0]=="ping"){
-            message.reply(`🏓Pong! ${Date.now() - message.createdTimestamp}ms`)
+            message.reply(`🏓Pong! ${Date.now() - message.createdTimestamp}ms.`)
         }
     }
 })
