@@ -32,7 +32,7 @@ bot.on('message', message=>{
                         message.channel.send(`<@${member.id}> got kicked`)
                     }
                     if(message.guild.me.hasPermission("KICK_MEMBERS")){
-                        message.reply("I don\'t have permisions to do that")
+                        //message.reply("I don\'t have permisions to do that")
                     }
                 }
                 else {
@@ -67,7 +67,7 @@ bot.on('message', message=>{
                 }
             }
             else {
-                message.reply("you don\'t have permission to kick")
+                //message.reply("you don\'t have permission to kick")
             }
         }
     }
@@ -86,7 +86,7 @@ bot.on('message', message=>{
                         message.reply(":regional_indicator_x: Could not kick")
                     }
                     if(message.guild.me.hasPermission("BAN_MEMBERS")){
-                        message.reply("I don\'t have permisions to do that")
+                       //message.reply("I don\'t have permisions to do that")
                     }
                 }
                 else {
@@ -139,7 +139,7 @@ bot.on('message', message=>{
                         message.reply(":regional_indicator_x: Error")
                     }
                     if(message.guild.me.hasPermission("MANAGE_ROLES")){
-                        message.reply("I don\'t have permisions to do that")
+                        //message.reply("I don\'t have permisions to do that")
                     }
                 }
                 else {
@@ -148,6 +148,33 @@ bot.on('message', message=>{
             }
             else{
                 message.reply("you don\'t have perms to manage roles")
+            }
+        }
+    }
+    if(prefix=='.'&&!message.author.bot){
+        if(args[0]=="vote-link"){
+            message.channel.send("@everyone\nVote for this server: https://top.gg/servers/778628348669853707\nWho votes gets a free voter role")
+        }
+    }
+    if(prefix=='.'&&!message.author.bot){
+        if(args[0]=="add-role"){
+            if(args[1]!=null || args[1]!=""){
+                if(message.mentions.members.first()){
+                    if(message.member.hasPermission("MANAGE_ROLES")){
+                        try{
+                            const user=message.mentions.members.first()
+                            const member=message.guild.members.resolve(user)
+                            member.roles.add(args[1])
+                            message.reply(":ballot_box_with_check:")
+                        }
+                        catch{
+                            message.reply(":regional_indicator_x: Error")
+                        }
+                    }
+                    else {
+                        message.reply("You dont have permission")
+                    }
+                }
             }
         }
     }
