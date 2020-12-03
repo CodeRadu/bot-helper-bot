@@ -22,4 +22,13 @@ app.get('/stop', (req, res)=>{
     }, 1000)
 })
 
+io.on('connection', socket=>{
+    socket.emit('status')
+    socket.on('sstatus', status=>{
+        if(status==0){
+            socket.emit('message', "Downloading files...")
+        }
+    })
+})
+
 server.listen(81)
