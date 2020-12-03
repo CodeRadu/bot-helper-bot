@@ -3,7 +3,7 @@ const app=express()
 const exec=require('child_process').exec
 
 app.get('/update', (req, res)=>{
-    res.send("Updated")
+    res.send("Updating")
     setTimeout(()=>{
         exec('sh ./download.sh')
     }, 1000)
