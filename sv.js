@@ -28,8 +28,10 @@ io.on('connection', socket=>{
         if(status==0){
             socket.emit('message', "Downloading files...")
             exec('sudo git pull')
-            socket.emit('message', "Restarting to apply changes...")
-            exec('sudo sh ./download.sh')
+            setTimeout(()=>{
+                socket.emit('message', "Restarting to apply changes...")
+                exec('sudo sh ./download.sh')
+            }, 1500)
         }
         if(status==1){
             socket.emit('message', "Done")
