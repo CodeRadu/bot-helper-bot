@@ -6,7 +6,7 @@ const token=process.env.BOT_ID
 allowPing={}
 
 bot.on('ready', ()=>{
-    console.log('a')
+    console.log('ready')
     bot.user.setStatus("online")
 })
 
