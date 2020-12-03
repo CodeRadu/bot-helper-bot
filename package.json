@@ -4,7 +4,7 @@
   "description": "",
   "main": "bots.js",
   "scripts": {
-    "devStart": "sh ./update.sh",
+    "update": "sh ./update.sh",
     "start": "node bot.js"
   },
   "author": "Radu",

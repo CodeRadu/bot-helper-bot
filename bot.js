@@ -178,6 +178,11 @@ bot.on('message', message=>{
             }
         }
     }
+    if(prefix=='.'&&!message.author.bot){
+        if(args[0]=="ping"){
+            message.reply("It\'s working")
+        }
+    }
 })
 
 bot.login(token)
