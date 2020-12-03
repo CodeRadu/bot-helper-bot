@@ -1,6 +1,9 @@
 const express=require('express')
 const app=express()
+const server=require('http').Server(app)
 const exec=require('child_process').exec
+
+app.use(express.static('public'))
 
 app.get('/update', (req, res)=>{
     res.send("Updating")
@@ -21,4 +24,4 @@ app.get('/stop', (req, res)=>{
     }, 1000)
 })
 
-app.listen(81)
+server.listen(81)
