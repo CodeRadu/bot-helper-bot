@@ -27,6 +27,12 @@ io.on('connection', socket=>{
     socket.on('sstatus', status=>{
         if(status==0){
             socket.emit('message', "Downloading files...")
+            exec('sudo git pull')
+            socket.emit('message', "Restarting to apply changes...")
+            exec('sudo sh ./download.sh')
+        }
+        if(status==1){
+            socket.emit('message', "Done")
         }
     })
 })

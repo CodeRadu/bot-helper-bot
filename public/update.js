@@ -4,6 +4,7 @@ status=0
 
 socket.on('status', ()=>{
     socket.emit('sstatus', status)
+    status=1
 })
 
 socket.on('message', message=>{
