@@ -34,7 +34,7 @@ io.on('connection', socket=>{
             }, 1500)
         }
         if(status==1){
-            socket.emit('message', "Done")
+            socket.emit('message', "Update succesfull")
         }
     })
 })
