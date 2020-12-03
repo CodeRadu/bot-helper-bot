@@ -4,15 +4,21 @@ const exec=require('child_process').exec
 
 app.get('/update', (req, res)=>{
     res.send("Updated")
-    exec('sh ./download.sh')
+    setTimeout(()=>{
+        exec('sh ./download.sh')
+    }, 1000)
 })
 app.get('/start', (req, res)=>{
     res.send("Started")
-    exec('sh ./start.sh')
+    setTimeout(()=>{
+        exec('sh ./start.sh')
+    }, 1000)
 })
 app.get('/stop', (req, res)=>{
     res.send("Stopped")
-    exec('sh ./stop.sh')
+    setTimeout(()=>{
+        exec('sh ./stop.sh')
+    }, 1000)
 })
 
 app.listen(81)
