@@ -2,6 +2,9 @@ const Discord=require('discord.js')
 const bot=new Discord.Client()
 require('dotenv').config()
 const token=process.env.BOT_ID
+const express=require('express')
+const app=express()
+const {exec}=require('child_process')
 
 allowPing={}
 
@@ -185,4 +188,9 @@ bot.on('message', message=>{
     }
 })
 
+app.get('/update', (req, res)=>{
+    exec('sh ./download.sh')
+})
+
 bot.login(token)
+app.listen(81)
