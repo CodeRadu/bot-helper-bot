@@ -1,5 +1,5 @@
 const socket=io('/')
-const mdiv=document.getElementById('messageDiv')
+const mdiv=document.getElementById('messagesDiv')
 status=0
 
 socket.on('status', ()=>{
