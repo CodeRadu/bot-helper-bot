@@ -180,7 +180,7 @@ bot.on('message', message=>{
     }
     if(prefix=='.'&&!message.author.bot){
         if(args[0]=="ping"){
-            message.reply(`🏓Latency is ${Date.now() - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ws.ping)}ms`)
+            message.reply(`🏓Pong! ${Date.now() - message.createdTimestamp}ms`)
         }
     }
 })
