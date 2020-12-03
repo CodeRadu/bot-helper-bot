@@ -1,3 +1,6 @@
 node_modules
 .env
 update.sh
+download.sh
+start.sh
+stop.sh
