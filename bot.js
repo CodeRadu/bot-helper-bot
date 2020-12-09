@@ -183,6 +183,11 @@ bot.on('message', message=>{
             message.reply(`🏓Pong! ${Date.now() - message.createdTimestamp}ms.`)
         }
     }
+    if(prefix=='.' && !message.author.bot){
+        if(args[0]=="id"){
+            message.channel.send(`Guild id: ${message.guild.id}`)
+        }
+    }
 })
 
 bot.login(token)
